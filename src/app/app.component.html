@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="search">
+        <input type="text" placeholder="Search setting" />
+        <div>15 Setting Found</div>
+    </div>
+    <div class="tab-menu">
+        <div [class.active]="currentTab == 'user'" (click)="selectTab('user')">
+            User Settings
+        </div>
+        <div [class.active]="currentTab == 'workspace'" (click)="selectTab('workspace')">
+            Workspace Settings
+        </div>
+    </div>
+    <div class="setting-panel" *ngIf="currentTab == 'user'">
+        <div class="settingTreeView">
+            <span>Commonly Used</span>
+            <tree-root [nodes]="userMenuNodes" [options]="options"></tree-root>
+        </div>
+        <div class="settingConfigs">
+            <h5>Commonly Used</h5>
+            <app-config 
+            [groupName]="'Files :'" 
+            [name]="'Auto Save   '" 
+            [remark]="''"
+            [detail]="'Controls auto save of dirty editors. Read more about autosave here.'"
+            [value]="'afterDelay'">
+            </app-config>
+            
+            <app-config 
+            [groupName]="'Files :'" 
+            [name]="'Auto Save Delay  '" 
+            [remark]="''"
+            [detail]="'Controls the delay in ms after which a dirty file is saved automatically. Only applies when Files : Auto Save is set to aferDelay.'"
+            [value]="'2000'">
+            </app-config>
+            
+            <app-config 
+            [groupName]="'Editor :'" 
+            [name]="'Font Size  '" 
+            [remark]="''"
+            [detail]="'Controls the font size in pixels.'"
+            [value]="'14'">
+            </app-config>
+            
+            <app-config 
+            [groupName]="'Editor :'" 
+            [name]="'Font Family  '" 
+            [remark]="'(Modified in: User)'"
+            [detail]="'Controls the font family.'"
+            [value]="'Menlo, Monaco, \'Courier New\', monospace'">
+            </app-config>
+        </div>
+    </div>
+    <div class="setting-panel" *ngIf="currentTab == 'workspace'">
+        <div class="settingTreeView">
+            <span>Commonly Used</span>
+            <tree-root [nodes]="workspaceMenuNodes" [options]="options"></tree-root>
+        </div>
+        <div class="settingConfigs">
+            <h5>Commonly Used</h5>
+            <app-config 
+            [groupName]="'Files :'" 
+            [name]="'Auto Save   '" 
+            [remark]="'(Modified in: User)'"
+            [detail]="'Controls auto save of dirty editors. Read more about autosave here.'"
+            [value]="'off'">
+            </app-config>
+            
+            <app-config 
+            [groupName]="'Files :'" 
+            [name]="'Auto Save Delay  '" 
+            [remark]="''"
+            [detail]="'Controls the delay in ms after which a dirty file is saved automatically. Only applies when Files : Auto Save is set to aferDelay.'"
+            [value]="'1000'">
+            </app-config>
+            
+            <app-config 
+            [groupName]="'Editor :'" 
+            [name]="'Font Size  '" 
+            [remark]="''"
+            [detail]="'Controls the font size in pixels.'"
+            [value]="'12'">
+            </app-config>
+            
+            <app-config 
+            [groupName]="'Editor :'" 
+            [name]="'Font Family  '" 
+            [remark]="'(Modified in: User)'"
+            [detail]="'Controls the font family.'"
+            [value]="'Menlo, Monaco, \'Courier New\', monospace'">
+            </app-config>
+        </div>
+    </div>
+</div> 
+
